@@ -1,0 +1,124 @@
+@font-face {
+  font-family: "Alata";
+  src: url("font/Alata-Regular.woff2");
+  /*
+    Refer to assets/Alata-OFL.txt
+    or https://github.com/SorkinType/Alata/blob/master/OFL.txt
+    for license of font
+  */
+}
+
+body {
+  color: #f0f0f0;
+  font-family: "Alata";
+  background: #101010;
+  background-image: url("images/bg.png");
+  background-size: 150px;
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  margin: 5px;
+}
+
+.wrapper {
+  position: absolute;
+  width:100%;
+  min-height:100%;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 30px;
+  margin-bottom: 8rem;
+  text-align: center;
+  max-width: 1100px;
+}
+
+.select-box {
+  margin: 14px;
+  margin-bottom: 6px;
+  /* margin-bottom: 40px; */
+  padding: 8px;
+  border: 8px solid #627074;
+  border-radius: 30px;
+  background: #A8E6FF20;
+  filter: drop-shadow(3px 3px 2px #000);
+}
+
+.presets {
+  display: block ruby;
+  text-align: center;
+  max-width: 92%;
+  margin: auto;
+  /* margin-top: 20px; */
+  margin-bottom: 30px;
+}
+
+.button {
+  background-color: #000;
+  margin: 3px;
+  color: #B58419;
+  border: 2px solid #B58419;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 1px #956808);
+}
+
+.button:hover {
+  color: #D1991F;
+  border-color: #c48a0e;
+  filter: drop-shadow(0px 0px 3px #956808);
+}
+
+.random-box {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 8px;
+  filter: drop-shadow(3px 3px 2px #000);
+}
+
+.randomized-list {
+  margin: 0px 16px;
+  padding: 8px 4px;
+  border: 8px solid #6d824b;
+  border-radius: 30px;
+  background: #d6ffa832;
+  max-width: 800px;
+  min-width: 150px;
+  min-height: 80px;
+}
+
+.character-container{
+  display: inline-block;
+  margin: 5px;
+  width: 80px;
+  height: 80px;
+}
+
+.character{
+  filter: drop-shadow(3px 3px 0px #000000ff) drop-shadow(1px 0px 4px #ffffffa0);
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.credits {
+  position: absolute;
+  bottom: 0px;
+  padding: 4px;
+}
+
+.credits p {
+  color: #B0B0B0;
+  filter: drop-shadow(1px 1px 0px #2d2b35);
+}
+
+.credits a:link, a:visited {
+  color: unset;
+}
