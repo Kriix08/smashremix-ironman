@@ -46,7 +46,7 @@ const all_characters = [ // List of available characters
   "MARIO_METAL",
   "LUIGI_METAL",
   "MAD_PIANO",
-  "BOWSER_GIANT",
+  "BOWSER_GIGA",
   "SONIC_SUPER",
 ]
 
@@ -55,7 +55,7 @@ const off_characters = [ // List of off-by-default characters
   "SLIPPY",
   "MARIO_METAL",
   "LUIGI_METAL",
-  "BOWSER_GIANT",
+  "BOWSER_GIGA",
   "SONIC_SUPER",
   "MAD_PIANO",
   "DKING",
@@ -116,6 +116,18 @@ presets.set("bonus", [
   "LUIGI_METAL",
 ])
 
+presets.set("boss", [
+  "PEPPY",
+  "SLIPPY",
+  "DKING",
+  "EBI",
+  "MARIO_METAL",
+  "LUIGI_METAL",
+  "MAD_PIANO",
+  "BOWSER_GIGA",
+  "SONIC_SUPER",
+])
+
 presets.set("bros", [
   "MARIO",
   "LUIGI",
@@ -123,6 +135,14 @@ presets.set("bros", [
   "DRL",
   "MARIO_METAL",
   "LUIGI_METAL",
+])
+
+presets.set("starfox", [
+  "FOX",
+  "WOLF",
+  "PEPPY",
+  "SLIPPY",
+  "FALCO",
 ])
 
 var character_elements = []   // Elements for all characters
@@ -173,24 +193,22 @@ function addPreset(preset, name) {
 
 function applyPreset(preset) {
   var preset_characters = presets.get(preset)
-  characters = preset_characters
-
-  // Toggle characters
-  for (var i = character_elements.length - 1; i >= 0; i--) {
-    var char_name = all_characters[character_elements.indexOf(character_elements[i])]
-    character_elements[i].style.filter=`${deactivate}`
-
-    // Re-activate if character is in preset
-    if (characters.includes(preset_characters[i])) {
-      character_elements[i].style.filter=``
-    }
-  }
-
   var char_index = characters.indexOf(char_name)
-  
-  if (characters.includes(all_characters[i])) {
-    character_list.lastElementChild.style.filter=``
+  console.log(preset_characters)
+
+  // Turn off all characters
+  for (var i=0; i<character_elements.length; i++) {
+    character_elements[i].style.filter=`${deactivate}`
   }
+
+  // Re-activate if character is in preset
+  for (var i=0; i<all_characters.length; i++) {
+    var char_name = all_characters[character_elements.indexOf(character_elements[i])]
+    if (preset_characters.includes(char_name))
+      character_elements[i].style.filter=``
+  }
+
+  characters = preset_characters
 }
 
 function toggleCharacter(char, affects_list) {
@@ -250,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Add all presets after "Presets:" text 
   var preset_list = document.querySelector("#presets-list")
-  // presets.forEach(addPreset, preset_list)
+  presets.forEach(addPreset, preset_list)
 
   // Add "?" in empty results slot
   addCharacter(randomized_list, "NONE", false)
