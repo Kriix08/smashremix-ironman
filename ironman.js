@@ -172,21 +172,24 @@ function addPreset(preset, name) {
 }
 
 function applyPreset(preset) {
-  // Remove all characters from selection list
+  var preset_characters = presets.get(preset)
+  characters = preset_characters
+
+  // Toggle characters
   for (var i = character_elements.length - 1; i >= 0; i--) {
-    character_elements[i].remove()
+    var char_name = all_characters[character_elements.indexOf(character_elements[i])]
+    character_elements[i].style.filter=`${deactivate}`
+
+    // Re-activate if character is in preset
+    if (characters.includes(preset_characters[i])) {
+      character_elements[i].style.filter=``
+    }
   }
 
-  characters = presets.get(preset)
-
-  // Add all characters to selection list
-  for (var i=0; i<all_characters.length; i++) {
-    addCharacter(character_list, all_characters[i], true) 
-    character_elements.push(character_list.lastElementChild)
-
-  //   // Deactivate if not included in preset
-  //   if (!characters.includes(all_characters[i]))
-  //     character_list.lastElementChild.style.filter=`${deactivate}`
+  var char_index = characters.indexOf(char_name)
+  
+  if (characters.includes(all_characters[i])) {
+    character_list.lastElementChild.style.filter=``
   }
 }
 
@@ -247,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Add all presets after "Presets:" text 
   var preset_list = document.querySelector("#presets-list")
-  presets.forEach(addPreset, preset_list)
+  // presets.forEach(addPreset, preset_list)
 
   // Add "?" in empty results slot
   addCharacter(randomized_list, "NONE", false)
