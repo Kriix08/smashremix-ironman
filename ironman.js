@@ -70,6 +70,41 @@ presets.set("all", all_characters.slice())
 
 presets.set("none", [])
 
+presets.set("default", [
+  "MARIO",
+  "LUIGI",
+  "DK",
+  "LINK",
+  "SAMUS",
+  "FALCON",
+  "NESS",
+  "YOSHI",
+  "KIRBY",
+  "FOX",
+  "PIKACHU",
+  "JIGGLYPUFF",
+  "GANONDORF",
+  "LINK_YOUNG",
+  "FALCO",
+  "DRM",
+  "DSAMUS",
+  "WARIO",
+  "LUCAS",
+  "BOWSER",
+  "WOLF",
+  "CONKER",
+  "MEWTWO",
+  "MARTH",
+  "SONIC",
+  "SHEIK",
+  "MARINA",
+  "DDD",
+  "GOEMON",
+  "BANJO",
+  "PEACH",
+  "CRASH",
+])
+
 presets.set("vanilla", [
   "MARIO",
   "LUIGI",
@@ -179,7 +214,6 @@ function shuffleArray(array) {
 }
 
 characters = all_characters.filter(isInArray, off_characters);
-console.log(characters)
 
 function addCharacter(list, char, toggleRandom) {
   list.insertAdjacentHTML("beforeend",
@@ -202,10 +236,15 @@ function addPreset(preset, name) {
   )
 }
 
+function savePreset() {
+  presets.set("load", characters.slice())
+  console.log("Save LOAD preset:", presets.get("load"))
+}
+
 function applyPreset(preset) {
   var preset_characters = presets.get(preset).slice()
   var char_index = characters.indexOf(char_name)
-  console.log(preset_characters)
+  console.log("Loaded preset:", preset, preset_characters)
 
   // Turn off all characters
   for (var i=0; i<character_elements.length; i++) {
@@ -281,6 +320,7 @@ document.addEventListener("DOMContentLoaded", function() {
   // Add all presets after "Presets:" text 
   var preset_list = document.querySelector("#presets-list")
   presets.forEach(addPreset, preset_list)
+  presets.set("load", [])
 
   // Add "?" in empty results slots
   addCharacter(document.querySelector(`#random-p1`), "NONE", false)

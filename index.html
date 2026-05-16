@@ -15,12 +15,16 @@
   <div class="wrapper">
     <div class="container">
       <div class="select-box">
-        <h2 style="margin:5px; filter: drop-shadow(1px 1px 2px #000) drop-shadow(-1px -1px 2px #000);">Currently selected characters for play in randomized Ironman order:</h2>
+        <h2 style="margin:5px; filter: drop-shadow(1px 1px 2px #000) drop-shadow(-1px -1px 2px #000);">
+          Currently selected characters for play in randomized Ironman order:
+        </h2>
         <div class="character-list"></div>
 
         <div class="presets">
+          <input type="button" class="button" value="SAVE" onclick="savePreset()"></input>
+          <input type="button" class="button" value="LOAD" onclick="applyPreset('load')"></input>
           <p><b style="filter: drop-shadow(1px 1px 2px #000) drop-shadow(-1px -1px 2px #000);">Presets: </b>
-          <br id="presets-list">
+          <span style="white-space: nowrap" id="presets-list"></span>
           </p>
         </div>
       </div>
