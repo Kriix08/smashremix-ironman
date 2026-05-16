@@ -146,6 +146,16 @@ p {
   line-height: 80px;
 }
 
+.title {
+  color: #E3AC04;
+  text-align: left;
+  margin: 0px 40px;
+}
+
+.selector {
+  background-color: #F7B521;
+}
+
 .credits {
   position: absolute;
   bottom: 0px;
