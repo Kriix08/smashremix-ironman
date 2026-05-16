@@ -6,6 +6,7 @@
     or https://github.com/SorkinType/Alata/blob/master/OFL.txt
     for license of font
   */
+  font-display: swap
 }
 
 body {
@@ -141,6 +142,8 @@ p {
   object-fit: contain;
   user-select: none;
   -moz-user-select: none;
+  text-align: center;
+  line-height: 80px;
 }
 
 .credits {

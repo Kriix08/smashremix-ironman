@@ -225,6 +225,7 @@ function addCharacter(list, char, toggleRandom) {
       class="character" 
       src="images/characters/${char}.webp" 
       draggable="false" 
+      alt="${char}"
       onclick="toggleCharacter(this, ${toggleRandom})">
     </div>`
   )
