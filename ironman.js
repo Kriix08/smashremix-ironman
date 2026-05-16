@@ -46,6 +46,7 @@ const all_characters = [ // List of available characters
   "MARIO_METAL",
   "LUIGI_METAL",
   "MAD_PIANO",
+  "DK_GIANT",
   "BOWSER_GIGA",
   "SONIC_SUPER",
 ]
@@ -55,6 +56,7 @@ const off_characters = [ // List of off-by-default characters
   "SLIPPY",
   "MARIO_METAL",
   "LUIGI_METAL",
+  "DK_GIANT",
   "BOWSER_GIGA",
   "SONIC_SUPER",
   "MAD_PIANO",
@@ -124,6 +126,7 @@ presets.set("boss", [
   "MARIO_METAL",
   "LUIGI_METAL",
   "MAD_PIANO",
+  "DK_GIANT",
   "BOWSER_GIGA",
   "SONIC_SUPER",
 ])
@@ -179,15 +182,14 @@ function addCharacter(list, char, toggleRandom) {
       onclick="toggleCharacter(this, ${toggleRandom})">
     </div>`
   )
-};
+}
 
 function addPreset(preset, name) {
   this.insertAdjacentHTML("beforebegin",
-    `<input type="button" 
-      class="button" 
-      value="${name.toUpperCase()}" 
-      onclick="applyPreset('${name}')">
-    </input>`
+    `<input type="button"
+      class="button"
+      value="${name.toUpperCase()}"
+      onclick="applyPreset('${name}')"></input>`
   )
 }
 
@@ -216,7 +218,7 @@ function toggleCharacter(char, affects_list) {
 
   // Apply darkening to toggled characters
   if (div.style.filter == `${deactivate}`)
-    div.style.filter='none'
+    div.style=''
 	else
     div.style.filter=`${deactivate}`
 
