@@ -52,6 +52,9 @@ const all_characters = [ // List of available characters
 ]
 
 const off_characters = [ // List of off-by-default characters
+  "LANKY",
+  "ROY",
+  "DRL",
   "PEPPY",
   "SLIPPY",
   "MARIO_METAL",
