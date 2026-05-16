@@ -223,7 +223,7 @@ function addCharacter(list, char, toggleRandom) {
     `<div class="character-container">
       <input type="image" 
       class="character" 
-      src="images/characters/${char}.png" 
+      src="images/characters/${char}.webp" 
       draggable="false" 
       onclick="toggleCharacter(this, ${toggleRandom})">
     </div>`
