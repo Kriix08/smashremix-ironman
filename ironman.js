@@ -293,7 +293,7 @@ function randomizeCharacters(player) {
   // console.log(current_characters, characters)
   shuffleArray(characters)
 
-  var list = document.querySelector(`#random-${player}`)
+  var list = document.querySelector(`.random-${player}`)
 
   // Remove and then re-add characters
   while (list.lastChild) {
@@ -326,6 +326,6 @@ document.addEventListener("DOMContentLoaded", function() {
   presets.set("load", [])
 
   // Add "?" in empty results slots
-  addCharacter(document.querySelector(`#random-p1`), "NONE", false)
-  addCharacter(document.querySelector("#random-p2"), "NONE", false)
+  addCharacter(document.querySelector(`.random-p1`), "NONE", false)
+  addCharacter(document.querySelector(".random-p2"), "NONE", false)
 });

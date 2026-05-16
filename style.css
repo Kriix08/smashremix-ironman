@@ -57,15 +57,23 @@ p {
   filter: drop-shadow(3px 3px 2px #000);
 }
 
-.randomized-list {
+.random-p1, .random-p2 {
   margin: 0px 16px;
   padding: 8px 4px;
-  border: 8px solid #6d824b;
   border-radius: 30px;
-  background: #d6ffa832;
   max-width: 800px;
   min-width: 150px;
   min-height: 80px;
+}
+
+.random-p1 {
+  border: 8px solid #954B4B;
+  background: #FF8E8E33;
+}
+
+.random-p2 {
+  border: 8px solid #494eab;
+  background: #93a5ff32;
 }
 
 .presets {
