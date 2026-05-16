@@ -106,16 +106,14 @@ presets.set("remix", [
   "BANJO",
   "PEACH",
   "CRASH",
-  "LANKY",
-  "ROY",
-  "DRL",
 ])
 
 presets.set("bonus", [
+  "LANKY",
+  "ROY",
+  "DRL",
   "PEPPY",
   "SLIPPY",
-  "MARIO_METAL",
-  "LUIGI_METAL",
 ])
 
 presets.set("boss", [
@@ -148,9 +146,19 @@ presets.set("starfox", [
   "FALCO",
 ])
 
+presets.set("antagonists", [
+  "GANONDORF",
+  "DSAMUS",
+  "WARIO",
+  "BOWSER",
+  "WOLF",
+  "MEWTWO",
+  "DDD",
+  "MAD_PIANO",
+])
+
 var character_elements = []   // Elements for all characters
 var character_list = null     // Container for character selection
-var randomized_list = null    // Container for randomized characters
 
 const deactivate = "grayscale(75%) brightness(50%) hue-rotate(-30deg)"
 
@@ -179,6 +187,7 @@ function addCharacter(list, char, toggleRandom) {
       <input type="image" 
       class="character" 
       src="images/characters/${char}.png" 
+      draggable="false" 
       onclick="toggleCharacter(this, ${toggleRandom})">
     </div>`
   )
@@ -194,7 +203,7 @@ function addPreset(preset, name) {
 }
 
 function applyPreset(preset) {
-  var preset_characters = presets.get(preset)
+  var preset_characters = presets.get(preset).slice()
   var char_index = characters.indexOf(char_name)
   console.log(preset_characters)
 
@@ -237,25 +246,26 @@ function toggleCharacter(char, affects_list) {
   console.log(`${char_name} Toggled (IDX: ${char_index})`, characters)
 };
 
-function randomizeCharacters() {
+function randomizeCharacters(player) {
   // var current_characters = characters.slice()
   // console.log(current_characters, characters)
   shuffleArray(characters)
 
+  var list = document.querySelector(`#random-${player}`)
+
   // Remove and then re-add characters
-  while (randomized_list.lastChild) {
-    randomized_list.removeChild(randomized_list.lastChild);
+  while (list.lastChild) {
+    list.removeChild(list.lastChild);
   }
 
   for (var i=0; i<characters.length; i++) {
-    addCharacter(randomized_list, characters[i], false) 
+    addCharacter(list, characters[i], false) 
   }
 };
 
 // Do stuff on DOM load
 document.addEventListener("DOMContentLoaded", function() {
   character_list = document.querySelector(".character-list")
-  randomized_list = document.querySelector(".randomized-list")
 
   // Add all characters to selection list
   for (var i=0; i<all_characters.length; i++) {
@@ -272,6 +282,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var preset_list = document.querySelector("#presets-list")
   presets.forEach(addPreset, preset_list)
 
-  // Add "?" in empty results slot
-  addCharacter(randomized_list, "NONE", false)
+  // Add "?" in empty results slots
+  addCharacter(document.querySelector(`#random-p1`), "NONE", false)
+  addCharacter(document.querySelector("#random-p2"), "NONE", false)
 });
