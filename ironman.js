@@ -216,6 +216,8 @@ function shuffleArray(array) {
   return array
 }
 
+const clamp = (num, min, max) => Math.min(Math.max(num, min), max)
+
 characters = all_characters.filter(isInArray, off_characters);
 
 function addCharacter(list, char, toggleRandom) {
@@ -240,11 +242,13 @@ function addPreset(preset, name) {
   )
 }
 
+// Save currently selected characters into LOAD preset
 function savePreset() {
   presets.set("load", characters.slice())
   console.log("Save LOAD preset:", presets.get("load"))
 }
 
+// Apply preset based on name
 function applyPreset(preset) {
   var preset_characters = presets.get(preset).slice()
   var char_index = characters.indexOf(char_name)
@@ -258,11 +262,20 @@ function applyPreset(preset) {
   // Re-activate if character is in preset
   for (var i=0; i<all_characters.length; i++) {
     var char_name = all_characters[character_elements.indexOf(character_elements[i])]
+
     if (preset_characters.includes(char_name))
       character_elements[i].style.filter=``
   }
 
   characters = preset_characters
+}
+
+function incrementValue(text, increment, min, max) {
+  var para = document.querySelector(`${text}`)
+  var value = parseInt(para.innerText)
+  console.log(para, value)
+
+  para.innerText = clamp(value + increment, min, max)
 }
 
 function toggleCharacter(char, affects_list) {
@@ -271,7 +284,7 @@ function toggleCharacter(char, affects_list) {
   // Apply darkening to toggled characters
   if (div.style.filter == `${deactivate}`)
     div.style=''
-	else
+  else
     div.style.filter=`${deactivate}`
 
   if (!affects_list) return
@@ -285,7 +298,7 @@ function toggleCharacter(char, affects_list) {
     characters.push(char_name)
   else
     characters.splice(char_index, 1)
-  
+
   console.log(`${char_name} Toggled (IDX: ${char_index})`, characters)
 };
 
@@ -294,7 +307,7 @@ function randomizeCharacters(player) {
   // console.log(current_characters, characters)
   shuffleArray(characters)
 
-  var list = document.querySelector(`.random-${player}`)
+  var list = document.getElementById(`random-${player}`)
 
   // Remove and then re-add characters
   while (list.lastChild) {
@@ -302,7 +315,7 @@ function randomizeCharacters(player) {
   }
 
   for (var i=0; i<characters.length; i++) {
-    addCharacter(list, characters[i], false) 
+    addCharacter(list, characters[i], false)
   }
 };
 
@@ -325,8 +338,4 @@ document.addEventListener("DOMContentLoaded", function() {
   var preset_list = document.querySelector("#presets-list")
   presets.forEach(addPreset, preset_list)
   presets.set("load", [])
-
-  // Add "?" in empty results slots
-  addCharacter(document.querySelector(`.random-p1`), "NONE", false)
-  addCharacter(document.querySelector(".random-p2"), "NONE", false)
 });

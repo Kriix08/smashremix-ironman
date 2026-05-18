@@ -2,15 +2,18 @@
 <html lang="en">
   <head>
     <title>SSB64 Ironman Randomizer</title>
-    <link rel="preload" fetchpriority="high" as="script" href="ironman.js">
-    <link rel="preload" href="style.css" as="style" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="preload" href="bg.webp" as="image/webp" />
-    <link rel="preload" href="font/Alata-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon/16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon/32.png">
     <link rel="icon" type="image/png" sizes="48x48" href="images/favicon/48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/192.png">
+
+    <link rel="preload" fetchpriority="high" as="script" href="ironman.js">
+    <link rel="preload" href="style.css" as="style">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preload" href="images/bg.webp" as="image" type="image/webp">
+    <link rel="preload" href="font/Alata-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" fetchpriority="high" as="image" type="image/svg+xml" href="images/svg/caret-left.svg" crossorigin>
+    <link rel="preload" fetchpriority="high"  as="image" type="image/svg+xml" href="images/svg/caret-right.svg" crossorigin>
     <script type="text/javascript" src="ironman.js"></script>
 
     <meta property="og:type" content="website">
@@ -26,7 +29,25 @@
   <body>
   <div class="wrapper">
     <div class="container">
-      <h1 class="title"><i>Ironman Randomizer</i></h1>
+      <div class="top-bar">
+        <h1 class="title"><i>Ironman Randomizer</i></h1>
+
+        <div class="selector" style="display: none;">
+          <div class="selector-shadow" style="float: left;">
+            <div class="selector-caret-left" onclick="incrementValue('.selector-value', -1, 1, 4)"></div>
+          </div>
+
+          <p class="selector-shadow selector-text" style="float: left;"><b>PLAYERS</b></p>
+
+          <div class="selector-shadow" style="float: right;">
+            <div class="selector-caret-right" onclick="incrementValue('.selector-value', 1, 1, 4)"></div>
+          </div>
+
+          <p class="selector-value" style="float: right;">4</p>
+        </div>
+
+      </div>
+
       <div class="select-box">
         <h2 style="margin:5px; filter: drop-shadow(1px 1px 2px #000) drop-shadow(-1px -1px 2px #000);">
           Currently selected characters for play in randomized Ironman order:
@@ -44,12 +65,16 @@
 
       <input type="button" class="button" value="RANDOMIZE P1" onclick="randomizeCharacters('p1')">
       <div class="random-box">
-        <div class="random-p1"></div>
+        <div class="random-list" id="random-p1">
+          <div class="character-container"><img class="character" src="images/characters/NONE.webp" draggable="false" alt="?"></img></div>
+        </div>
       </div>
 
       <input type="button" class="button" value="RANDOMIZE P2" onclick="randomizeCharacters('p2')">
       <div class="random-box">
-        <div class="random-p2"></div>
+        <div class="random-list" id="random-p2">
+          <div class="character-container"><img class="character" src="images/characters/NONE.webp" draggable="false" alt="?"></img></div>
+        </div>
       </div>
     </div>
     
