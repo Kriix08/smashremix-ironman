@@ -13,7 +13,7 @@ body {
   color: #f0f0f0;
   font-family: "Alata";
   background: #101010;
-  /* background-image: url("images/bg.png"); */
+  background-image: url("images/bg.png");
   background-image: image-set(
     url("images/bg.webp") type("image/webp"),
     url("images/bg.png") type("image/png")
