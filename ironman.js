@@ -223,12 +223,14 @@ characters = all_characters.filter(isInArray, off_characters);
 function addCharacter(list, char, toggleRandom) {
   list.insertAdjacentHTML("beforeend",
     `<div class="character-container">
-      <input type="image" 
-      class="character" 
-      src="images/characters/${char}.webp" 
-      draggable="false" 
-      alt="${char}"
-      onclick="toggleCharacter(this, ${toggleRandom})">
+      <picture>
+        <source srcset="images/characters/${char}.webp" type="image/webp">
+        <img class="character"
+        src="images/characters/${char}.png"
+        draggable="false"
+        alt="${char}"
+        onclick="toggleCharacter(this, ${toggleRandom})">
+      </picture>
     </div>`
   )
 }
@@ -238,7 +240,7 @@ function addPreset(preset, name) {
     `<input type="button"
       class="button"
       value="${name.toUpperCase()}"
-      onclick="applyPreset('${name}')"></input>`
+      onclick="applyPreset('${name}')">`
   )
 }
 
@@ -254,12 +256,12 @@ function applyPreset(preset) {
   var char_index = characters.indexOf(char_name)
   console.log("Loaded preset:", preset, preset_characters)
 
-  // Turn off all characters
+  // Turn off all chars
   for (var i=0; i<character_elements.length; i++) {
     character_elements[i].style.filter=`${deactivate}`
   }
 
-  // Re-activate if character is in preset
+  // Re-activate if char is in preset
   for (var i=0; i<all_characters.length; i++) {
     var char_name = all_characters[character_elements.indexOf(character_elements[i])]
 
@@ -267,21 +269,21 @@ function applyPreset(preset) {
       character_elements[i].style.filter=``
   }
 
+  // Set actual selected chars to preset chars
   characters = preset_characters
 }
 
 function incrementValue(text, increment, min, max) {
   var para = document.querySelector(`${text}`)
   var value = parseInt(para.innerText)
-  console.log(para, value)
 
   para.innerText = clamp(value + increment, min, max)
 }
 
 function toggleCharacter(char, affects_list) {
-  var div = char.parentNode
+  var div = char.parentNode.parentNode
 
-  // Apply darkening to toggled characters
+  // Apply darkening to toggled char
   if (div.style.filter == `${deactivate}`)
     div.style=''
   else
@@ -292,24 +294,20 @@ function toggleCharacter(char, affects_list) {
   var char_name = all_characters[character_elements.indexOf(div)]
   var char_index = characters.indexOf(char_name)
 
-  // Index is -1 if toggled character isn't enabled already
+  // Index is -1 if char isn't enabled already
   console.log(char_index)
   if (char_index < 0)
     characters.push(char_name)
   else
     characters.splice(char_index, 1)
-
-  console.log(`${char_name} Toggled (IDX: ${char_index})`, characters)
 };
 
 function randomizeCharacters(player) {
-  // var current_characters = characters.slice()
-  // console.log(current_characters, characters)
   shuffleArray(characters)
 
   var list = document.getElementById(`random-${player}`)
 
-  // Remove and then re-add characters
+  // Remove and then re-add chars
   while (list.lastChild) {
     list.removeChild(list.lastChild);
   }
@@ -323,7 +321,7 @@ function randomizeCharacters(player) {
 document.addEventListener("DOMContentLoaded", function() {
   character_list = document.querySelector(".character-list")
 
-  // Add all characters to selection list
+  // Add all chars to selection list
   for (var i=0; i<all_characters.length; i++) {
     addCharacter(character_list, all_characters[i], true) 
     character_elements.push(character_list.lastElementChild)
@@ -332,7 +330,6 @@ document.addEventListener("DOMContentLoaded", function() {
     if (!characters.includes(all_characters[i]))
       character_list.lastElementChild.style.filter=`${deactivate}`
   }
-  console.log("Characters added", character_elements)
 
   // Add all presets after "Presets:" text 
   var preset_list = document.querySelector("#presets-list")
