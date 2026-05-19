@@ -7,14 +7,14 @@
     <link rel="icon" type="image/png" sizes="48x48" href="images/favicon/48.png">
     <link rel="icon" type="image/png" sizes="192x192" href="images/favicon/192.png">
 
-    <link rel="preload" fetchpriority="high" as="script" href="ironman.js?1">
+    <link rel="preload" fetchpriority="high" as="script" href="ironman.js">
     <link rel="preload" href="style.css" as="style">
     <link rel="stylesheet" href="style.css">
     <link rel="preload" href="images/bg.webp" as="image" type="image/webp">
     <link rel="preload" href="font/Alata-Regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" fetchpriority="high" as="image" type="image/svg+xml" href="images/svg/caret-left.svg" crossorigin>
     <link rel="preload" fetchpriority="high"  as="image" type="image/svg+xml" href="images/svg/caret-right.svg" crossorigin>
-    <script type="text/javascript" src="ironman.js?1"></script>
+    <script type="text/javascript" src="ironman.js"></script>
 
     <meta property="og:type" content="website">
     <meta property="og:title" content="SSB64 Ironman Randomizer">
@@ -66,14 +66,24 @@
       <input type="button" class="button" value="RANDOMIZE P1" onclick="randomizeCharacters('p1')">
       <div class="random-box">
         <div class="random-list" id="random-p1">
-          <div class="character-container"><img class="character" src="images/characters/NONE.webp" draggable="false" alt="?"></img></div>
+          <div class="character-container">
+            <picture>
+              <source srcset="images/characters/NONE.webp" type="image/webp">
+              <img class="character" src="images/characters/NONE.png" draggable="false" alt="?">
+            </picture>
+          </div>
         </div>
       </div>
 
       <input type="button" class="button" value="RANDOMIZE P2" onclick="randomizeCharacters('p2')">
       <div class="random-box">
         <div class="random-list" id="random-p2">
-          <div class="character-container"><img class="character" src="images/characters/NONE.webp" draggable="false" alt="?"></img></div>
+          <div class="character-container">
+            <picture>
+              <source srcset="images/characters/NONE.webp" type="image/webp">
+              <img class="character" src="images/characters/NONE.png" draggable="false" alt="?">
+            </picture>
+          </div>
         </div>
       </div>
     </div>
