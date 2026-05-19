@@ -30,9 +30,12 @@
   <body>
   <div class="wrapper">
     <div class="container">
+
+      <!-- Top-most section (title, player count..) -->
       <div class="top-bar">
         <h1 class="title"><i>Ironman Randomizer</i></h1>
 
+        <!-- Players button -->
         <div class="selector" style="display: none;">
           <div class="selector-shadow" style="float: left;">
             <div class="selector-caret-left" onclick="incrementValue('.selector-value', -1, 1, 4)"></div>
@@ -49,6 +52,7 @@
 
       </div>
 
+      <!-- Container for all character select elements (text, characters, presets..) -->
       <div class="select-box">
         <h2 style="margin: 5px; filter: drop-shadow(1px 1px 2px #000) drop-shadow(-1px -1px 2px #000);">
           Currently selected characters for play in randomized Ironman order:
@@ -64,6 +68,7 @@
         </div>
       </div>
 
+      <!-- P1 randomization --->
       <input type="button" class="button" value="RANDOMIZE P1" onclick="randomizeCharacters('p1')">
       <div class="random-box">
         <div class="random-list" id="random-p1">
@@ -76,6 +81,7 @@
         </div>
       </div>
 
+      <!-- P2 randomization -->
       <input type="button" class="button" value="RANDOMIZE P2" onclick="randomizeCharacters('p2')">
       <div class="random-box">
         <div class="random-list" id="random-p2">
@@ -89,6 +95,7 @@
       </div>
     </div>
     
+    <!-- Credits :> -->
     <div class="credits">
       <p>Commissioned by 1upshyguy</p>
       <p>Created by Krix08 - 
