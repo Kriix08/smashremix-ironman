@@ -38,18 +38,18 @@
         <h1 class="title"><i>Ironman Randomizer</i></h1>
 
         <!-- Players button -->
-        <div class="selector" style="display: none;">
+        <div class="selector">
           <div class="selector-shadow" style="float: left;">
-            <div class="selector-caret-left" onclick="incrementValue('.selector-value', -1, 1, 4)"></div>
+            <div class="selector-caret-left" onclick="updatePlayerCount(-1)"></div>
           </div>
 
           <p class="selector-shadow selector-text" style="float: left;"><b>PLAYERS</b></p>
 
           <div class="selector-shadow" style="float: right;">
-            <div class="selector-caret-right" onclick="incrementValue('.selector-value', 1, 1, 4)"></div>
+            <div class="selector-caret-right" onclick="updatePlayerCount(1)"></div>
           </div>
 
-          <p class="selector-value" style="float: right;">4</p>
+          <p class="selector-value" style="float: right;">2</p>
         </div>
 
       </div>
@@ -70,31 +70,74 @@
         </div>
       </div>
 
-      <!-- P1 randomization --->
-      <input type="button" class="button" value="RANDOMIZE P1" onclick="randomizeCharacters('p1')">
-      <div class="random-box">
-        <div class="random-list" id="random-p1">
-          <div class="character-container">
-            <picture>
-              <source srcset="images/characters/NONE.webp" type="image/webp">
-              <img class="character" src="images/characters/NONE.png" draggable="false" alt="?">
-            </picture>
+      <!-- P1 randomization -->
+      <div id="random-p1">
+        <input type="button" class="button" value="RANDOMIZE P1" onclick="randomizeCharacters('p1')">
+
+        <div class="random-box">
+          <div class="random-list" id="random-list-p1">
+            <div class="character-container">
+              <picture>
+                <source srcset="images/characters/NONE.webp" type="image/webp">
+                <img class="character" src="images/characters/NONE.png" draggable="false" alt="?">
+              </picture>
+            </div>
           </div>
         </div>
+
       </div>
 
       <!-- P2 randomization -->
-      <input type="button" class="button" value="RANDOMIZE P2" onclick="randomizeCharacters('p2')">
-      <div class="random-box">
-        <div class="random-list" id="random-p2">
-          <div class="character-container">
-            <picture>
-              <source srcset="images/characters/NONE.webp" type="image/webp">
-              <img class="character" src="images/characters/NONE.png" draggable="false" alt="?">
-            </picture>
+      <div id="random-p2">
+        <input type="button" class="button" value="RANDOMIZE P2" onclick="randomizeCharacters('p2')">
+
+        <div class="random-box">
+          <div class="random-list" id="random-list-p2">
+            <div class="character-container">
+              <picture>
+                <source srcset="images/characters/NONE.webp" type="image/webp">
+                <img class="character" src="images/characters/NONE.png" draggable="false" alt="?">
+              </picture>
+            </div>
           </div>
         </div>
+
       </div>
+
+      <!-- P3 randomization -->
+      <div id="random-p3" style="display:none">
+        <input type="button" class="button" value="RANDOMIZE P3" onclick="randomizeCharacters('p3')">
+
+        <div class="random-box">
+          <div class="random-list" id="random-list-p3">
+            <div class="character-container">
+              <picture>
+                <source srcset="images/characters/NONE.webp" type="image/webp">
+                <img class="character" src="images/characters/NONE.png" draggable="false" alt="?">
+              </picture>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- P4 randomization -->
+      <div id="random-p4" style="display:none">
+        <input type="button" class="button" value="RANDOMIZE P4" onclick="randomizeCharacters('p4')">
+
+        <div class="random-box">
+          <div class="random-list" id="random-list-p4">
+            <div class="character-container">
+              <picture>
+                <source srcset="images/characters/NONE.webp" type="image/webp">
+                <img class="character" src="images/characters/NONE.png" draggable="false" alt="?">
+              </picture>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
     
     <!-- Credits :> -->

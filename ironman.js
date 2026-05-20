@@ -212,7 +212,6 @@ function shuffleArray(array) {
     array[i] = temp
   }
 
-  console.log("shuffle")
   return array
 }
 
@@ -276,8 +275,23 @@ function applyPreset(preset) {
 function incrementValue(text, increment, min, max) {
   var para = document.querySelector(`${text}`)
   var value = parseInt(para.innerText)
+  var updValue = clamp(value + increment, min, max)
 
-  para.innerText = clamp(value + increment, min, max)
+  para.innerText = updValue
+  return updValue
+}
+
+function updatePlayerCount(increment) {
+  var count = incrementValue('.selector-value', increment, 1, 4)
+
+  for (var i=4; i>=count; i--) {
+    var player = document.getElementById(`random-p${i}`)
+    if (i == count) {
+      player.style=''
+    } else {
+      player.style='display: none'
+    }
+  }
 }
 
 function toggleCharacter(char, affects_list) {
@@ -305,7 +319,7 @@ function toggleCharacter(char, affects_list) {
 function randomizeCharacters(player) {
   shuffleArray(characters)
 
-  var list = document.getElementById(`random-${player}`)
+  var list = document.getElementById(`random-list-${player}`)
 
   // Remove and then re-add chars
   while (list.lastChild) {
