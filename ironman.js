@@ -289,7 +289,7 @@ function updatePlayerCount(increment) {
     if (i == count) {
       player.style=''
     } else {
-      player.style='display: none'
+      player.style='display:none'
     }
   }
 }
