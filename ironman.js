@@ -195,6 +195,45 @@ presets.set("antagonists", [
   "MAD_PIANO",
 ])
 
+presets.set("goofballs", [
+  "LUIGI",
+  "DK",
+  "LINK",
+  "SAMUS",
+  "NESS",
+  "GANONDORF",
+  "MEWTWO",
+  "MARINA",
+  "PEACH",
+  "LANKY",
+])
+
+presets.set("krix's picks", [
+  "JIGGLYPUFF",
+  "LINK",
+  "SAMUS",
+  "NESS",
+  "LUCAS",
+  "DRM",
+  "DDD",
+  "MEWTWO",
+  "PEACH",
+  "CRASH",
+])
+
+presets.set("1up's list", [
+  "LUIGI",
+  "DK",
+  "KIRBY",
+  "JIGGLYPUFF",
+  "DRM",
+  "WARIO",
+  "CONKER",
+  "DDD",
+  "PEACH",
+  "ROY",
+])
+
 var character_elements = []   // Elements for all characters
 var character_list = null     // Container for character selection
 
@@ -239,7 +278,7 @@ function addPreset(preset, name) {
     `<input type="button"
       class="button"
       value="${name.toUpperCase()}"
-      onclick="applyPreset('${name}')">`
+      onclick="applyPreset(\`${name}\`)">`
   )
 }
 
