@@ -353,7 +353,7 @@ function toggleCharacter(char, affects_list) {
     characters.push(char_name)
   else
     characters.splice(char_index, 1)
-};
+}
 
 function randomizeCharacters(player) {
   shuffleArray(characters)
@@ -368,7 +368,17 @@ function randomizeCharacters(player) {
   for (var i=0; i<characters.length; i++) {
     addCharacter(list, characters[i], false)
   }
-};
+}
+
+function openHelp() {
+  alert(`
+Ironman rules:
+
+1. Make the per-player random list(s)
+2. Winner of a match moves on to the next character in their list (left to right)
+3. First player to complete their list wins!`
+  )
+}
 
 // Do stuff on DOM load
 document.addEventListener("DOMContentLoaded", function() {
@@ -388,4 +398,4 @@ document.addEventListener("DOMContentLoaded", function() {
   var preset_list = document.querySelector("#presets-list")
   presets.forEach(addPreset, preset_list)
   presets.set("load", [])
-});
+})
