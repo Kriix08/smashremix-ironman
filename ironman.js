@@ -234,6 +234,19 @@ presets.set("1up's list", [
   "ROY",
 ])
 
+presets.set("the mugen special", [
+  "CRASH",
+  "BANJO",
+  "MARINA",
+  "GOEMON",
+  "GANONDORF",
+  "LUCAS",
+  "LANKY",
+  "YOSHI",
+  "DRL",
+  "LINK_YOUNG",
+])
+
 var character_elements = []   // Elements for all characters
 var character_list = null     // Container for character selection
 
